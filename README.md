@@ -7,7 +7,11 @@
 ## Install
 
 ```bash
-yarn install -D webext-webpack-plugin
+yarn add -D webext-webpack-plugin
+```
+
+```bash
+npm add --save-dev webext-webpack-plugin
 ```
 
 ## Usage
