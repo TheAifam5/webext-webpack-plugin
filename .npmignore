@@ -1,0 +1,27 @@
+.vscode/
+
+test/
+typings/
+
+tslint.json
+tsconfig.json
+
+yarn*
+
+.npmignore
+.gitignore
+.gitmodules
+
+# for https://github.com/Microsoft/TypeScript/issues/4667
+src/**/*.ts
+!src/**/*.d.ts
+
+.travis.yml
+.editorconfig
+
+.tscache/
+node_modules/
+npm-shrinkwrap.json
+
+/*.tgz
+/*.txt
