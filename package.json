@@ -1,0 +1,31 @@
+{
+  "name": "webext-webpack-plugin",
+  "description": "WebExt Webpack Plugin",
+  "authors": "TheAifam5 <theaifam5@gmail.com>",
+  "version": "0.0.2",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TheAifam5/webext-webpack-plugin"
+  },
+  "main": "lib/index.js",
+  "types": "lib/index",
+  "scripts": {
+    "build": "tsc -b"
+  },
+  "dependencies": {
+    "web-ext": "^2.8.0"
+  },
+  "peerDependencies": {
+    "webpack": "^4.16.5"
+  },
+  "devDependencies": {
+    "@types/node": "^10.5.8",
+    "@types/webpack": "^4.4.9",
+    "typescript": "^3.0.1",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
+    "ts-loader": "^4.4.2",
+    "webpack": "^4.16.5"
+  }
+}
