@@ -12,7 +12,7 @@
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc -b",
-    "test": "ts-jest"
+    "test": "jest"
   },
   "dependencies": {
     "web-ext": "^2.8.0"
