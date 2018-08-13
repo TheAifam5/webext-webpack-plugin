@@ -1,7 +1,8 @@
 # web-ext plugin for Webpack 4
 
 [![NPM Version][npm-image]][npm-url]
-[![Build Status](travis-image)](travis-url)
+[![Build Status][travis-image]][travis-url]
+[![Dependencies][david-image]][david-url]
 [![Test Coverage][coveralls-image]][coveralls-url]
 
 ## Install
@@ -77,5 +78,7 @@ export default config;
 [npm-url]: https://npmjs.org/package/webext-webpack-plugin
 [travis-image]: https://travis-ci.org/TheAifam5/webext-webpack-plugin.svg?branch=master
 [travis-url]: https://travis-ci.org/TheAifam5/webext-webpack-plugin
+[david-image]: https://david-dm.org/TheAifam5/webext-webpack-plugin.svg
+[david-url]: https://david-dm.org/username/webext-webpack-plugin
 [coveralls-image]: https://img.shields.io/coveralls/TheAifam5/webext-webpack-plugin/master.svg
 [coveralls-url]: https://coveralls.io/r/TheAifam5/webext-webpack-plugin?branch=master
