@@ -41,8 +41,8 @@ export interface WebExtLintOptions {
 }
 
 export interface WebExtWebpackPluginOptions {
-  build: WebExtBuildOptions;
-  run: WebExtRunOptions;
+  build?: WebExtBuildOptions;
+  run?: WebExtRunOptions;
   lint?: WebExtLintOptions;
   sign?: WebExtSignOptions;
 }
