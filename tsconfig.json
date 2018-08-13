@@ -19,6 +19,14 @@
   ],
   "exclude": [
     "node_modules",
+    "lib",
     "**/*.spec.ts"
-  ]
+  ],
+  "jest": {
+    "globals": {
+      "ts-jest": {
+        "enableTsDiagnostics": true
+      }
+    }
+  }
 }

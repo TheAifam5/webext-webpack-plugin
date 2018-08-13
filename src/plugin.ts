@@ -10,8 +10,8 @@ export class WebExtWebpackPlugin implements Plugin {
   private extensionRunner: any;
   private watchEnabled: boolean;
 
-  public constructor(options: WebExtWebpackPluginOptions) {
-    this.options = options;
+  public constructor(options?: WebExtWebpackPluginOptions) {
+    this.options = options || {};
     this.extensionRunner = null;
     this.watchEnabled = false;
   }

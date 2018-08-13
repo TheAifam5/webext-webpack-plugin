@@ -1,6 +1,8 @@
 .vscode/
 
-test/
+__tests__/
+dist/
+coverage/
 typings/
 
 tslint.json
