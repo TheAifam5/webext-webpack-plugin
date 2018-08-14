@@ -1,5 +1,6 @@
 # Output
-lib
+coverage/
+lib/
 
 # Logs
 logs
@@ -59,3 +60,6 @@ jspm_packages/
 
 # next.js build output
 .next
+
+/*.tgz
+/*.txt

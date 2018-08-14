@@ -1,14 +1,14 @@
 .vscode/
 
 src/
-tests/
-dist/
+test/
 coverage/
 typings/
-lib/tests
 
 tslint.json
 tsconfig.json
+
+/*.config*
 
 yarn*
 
