@@ -6,7 +6,6 @@
     "noImplicitAny": true,
     "removeComments": true,
     "target": "es6",
-    "sourceMap": true,
     "outDir": "./lib",
     "rootDir": "./src",
     "lib": [
@@ -18,9 +17,7 @@
     "typings/**/*.d.ts"
   ],
   "exclude": [
-    "node_modules",
-    "lib",
-    "**/*.spec.ts"
+    "node_modules"
   ],
   "jest": {
     "globals": {

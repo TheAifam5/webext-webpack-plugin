@@ -9,9 +9,10 @@ install:
   - yarn install --frozen-lockfile
 
 before_script:
-  - yarn build
+  - yarn lint
 
 script:
+  - yarn build
   - yarn test
 
 after_script:
