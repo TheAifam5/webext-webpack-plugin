@@ -12,6 +12,7 @@
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc -b",
+    "lint": "tslint -p .",
     "test": "jest"
   },
   "dependencies": {
