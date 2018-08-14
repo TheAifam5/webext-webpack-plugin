@@ -22,7 +22,7 @@ export class WebExtWebpackPlugin implements Plugin {
     compiler.hooks.afterEmit.tapAsync(PLUGIN_NAME, this.onAfterEmitAsync.bind(this));
   }
 
-  private async onWatchRun() {
+  private onWatchRun() {
     this.watchEnabled = true;
   }
 
