@@ -17,8 +17,8 @@ export class WebExtWebpackPlugin implements Plugin {
   }
 
   public apply(compiler: Compiler): void {
-    compiler.hooks.watchRun.tap(PLUGIN_NAME, this.onWatchRun);
-    compiler.hooks.watchClose.tap(PLUGIN_NAME, this.onWatchClose);
+    compiler.hooks.watchRun.tap(PLUGIN_NAME, this.onWatchRun.bind(this));
+    compiler.hooks.watchClose.tap(PLUGIN_NAME, this.onWatchClose.bind(this));
     compiler.hooks.afterEmit.tapAsync(PLUGIN_NAME, this.onAfterEmitAsync.bind(this));
   }
 
