@@ -24,16 +24,11 @@ const WebExtWebpackPlugin = require('webext-webpack-plugin');
 const path = require('path');
 
 const baseDir = path.resolve(__dirname);
-const artifactsDir = path.join(baseDir, 'artifacts');
 
 const config = {
   plugins: [
     new WebExtWebpackPlugin({
-      build: {
-        artifactsDir,
-      },
       run: {
-        artifactsDir,
         firefox: 'C:\\Program Files\\Firefox Developer Edition\\firefox.exe',
         startUrl: ['https://google.com/'],
       },
@@ -42,7 +37,7 @@ const config = {
 };
 ```
 
-### TypeScript:
+### TypeScript
 
 ```ts
 import * as path from 'path';
@@ -50,16 +45,11 @@ import * as webpack from 'webpack';
 import WebExtWebpackPlugin from 'webext-webpack-plugin';
 
 const baseDir = path.resolve(__dirname);
-const artifactsDir = path.join(baseDir, 'artifacts');
 
 const config: webpack.Configuration  = {
   plugins: [
     new WebExtWebpackPlugin({
-      build: {
-        artifactsDir,
-      },
       run: {
-        artifactsDir,
         firefox: 'C:\\Program Files\\Firefox Developer Edition\\firefox.exe',
         startUrl: ['https://google.com/'],
       },
