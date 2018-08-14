@@ -1,7 +1,7 @@
 {
   "name": "webext-webpack-plugin",
   "description": "WebExt Webpack Plugin",
-  "authors": "TheAifam5 <theaifam5@gmail.com>",
+  "authors": "Mateusz Paluszkiewicz <theaifam5@gmail.com>",
   "version": "0.0.7",
   "license": "MIT",
   "repository": {
