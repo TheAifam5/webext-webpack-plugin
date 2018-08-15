@@ -2,8 +2,8 @@ language: node_js
 cache: yarn
 
 node_js:
-  - '8'
-  - '10'
+  - 'lts/*'
+  - 'node'
 
 install:
   - yarn install --frozen-lockfile
@@ -20,12 +20,12 @@ after_script:
   - rm -rf ./coverage
 
 deploy:
-  - provider: npm
-    skip_cleanup: true
-    email: theaifam5@gmail.com
-    node_js: '8'
-    api_key:
-      secure: 5jWvLtWnrwtIRF+MY3eahkP+kHuIWg6RRnZGIdLSjRmk5wE4x61ehhR+FGXc4SX/Efv9kBtHlHJOVfz91MjVU2W+qnXtjcczMys82embzHZtqy2vXZ5tgY1cJ83DNmi4h6XyPhSkdNaSZA7FLo6wEd5wxEqUoCbEI+BbtnHaJvAnU9ObG5/K8wFJ2hr+wFVMNt1L5T/pXlKAePmMkzxYuI6Xu/NHdgk9s0WrQy/vrJsPX63UmT7g86zuy2QJJIJXThUzm33H517tULlX4HMM0QjBnuNrr7PvmPOcieWbVf46uFArUjlMiRK/sTQj/005iGLhe7l7KZ8rYMNcDa+QXtpJSnB4+GwACuclib1RotBopM/wsd0RI0UdXsTKx2a87zlZB5wGRPbow3lYRbPf8K7ORhmsBmSPuAcMSJhky9+McyWd1K7F32rc+p0H0/RFA6+FAuMIxtZgaMJALM6FBm4spNWfwLmReYNELT4J1vFhQMm8C5kX0kDEl4KiS+Qfjso/H/bvkTWqgUX5rWl8TcTwBIZg36cVIgqsFh519AMFxtI8r2LrjWJrZHpsgDUUi/CdEGAEnwngJNBqVxF8K72WBAavN2P5YNdmqUoQBSndykYa5S7ScCpRRBim5aE7eyWOWSyzs1tPb8gnFLvjuJP8bIdvExV05AHr9uUk870=
-    on:
-      tags: true
-      repo: TheAifam5/webext-webpack-plugin
+  provider: npm
+  skip_cleanup: true
+  email: theaifam5@gmail.com
+  api_key:
+    secure: 5jWvLtWnrwtIRF+MY3eahkP+kHuIWg6RRnZGIdLSjRmk5wE4x61ehhR+FGXc4SX/Efv9kBtHlHJOVfz91MjVU2W+qnXtjcczMys82embzHZtqy2vXZ5tgY1cJ83DNmi4h6XyPhSkdNaSZA7FLo6wEd5wxEqUoCbEI+BbtnHaJvAnU9ObG5/K8wFJ2hr+wFVMNt1L5T/pXlKAePmMkzxYuI6Xu/NHdgk9s0WrQy/vrJsPX63UmT7g86zuy2QJJIJXThUzm33H517tULlX4HMM0QjBnuNrr7PvmPOcieWbVf46uFArUjlMiRK/sTQj/005iGLhe7l7KZ8rYMNcDa+QXtpJSnB4+GwACuclib1RotBopM/wsd0RI0UdXsTKx2a87zlZB5wGRPbow3lYRbPf8K7ORhmsBmSPuAcMSJhky9+McyWd1K7F32rc+p0H0/RFA6+FAuMIxtZgaMJALM6FBm4spNWfwLmReYNELT4J1vFhQMm8C5kX0kDEl4KiS+Qfjso/H/bvkTWqgUX5rWl8TcTwBIZg36cVIgqsFh519AMFxtI8r2LrjWJrZHpsgDUUi/CdEGAEnwngJNBqVxF8K72WBAavN2P5YNdmqUoQBSndykYa5S7ScCpRRBim5aE7eyWOWSyzs1tPb8gnFLvjuJP8bIdvExV05AHr9uUk870=
+  on:
+    tags: true
+    repo: TheAifam5/webext-webpack-plugin
+    node_js: 'lts/*'
