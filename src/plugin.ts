@@ -1,11 +1,15 @@
-
 import webext from 'web-ext';
-import { compilation as wc, Compiler, Plugin } from 'webpack';
+import {
+  Compilation,
+  Compiler,
+  WebpackError,
+  WebpackPluginInstance,
+} from 'webpack';
 import { WebExtWebpackPluginOptions } from './options';
 
 const PLUGIN_NAME = 'WebExtWebpackPlugin';
 
-export class WebExtWebpackPlugin implements Plugin {
+export class WebExtWebpackPlugin implements WebpackPluginInstance {
   private options: WebExtWebpackPluginOptions;
   private extensionRunner: any;
   private watchEnabled: boolean;
@@ -19,7 +23,10 @@ export class WebExtWebpackPlugin implements Plugin {
   public apply(compiler: Compiler): void {
     compiler.hooks.watchRun.tap(PLUGIN_NAME, this.onWatchRun.bind(this));
     compiler.hooks.watchClose.tap(PLUGIN_NAME, this.onWatchClose.bind(this));
-    compiler.hooks.afterEmit.tapAsync(PLUGIN_NAME, this.onAfterEmitAsync.bind(this));
+    compiler.hooks.afterEmit.tapAsync(
+      PLUGIN_NAME,
+      this.onAfterEmitAsync.bind(this),
+    );
   }
 
   private onWatchRun() {
@@ -30,7 +37,10 @@ export class WebExtWebpackPlugin implements Plugin {
     this.extensionRunner.exit();
   }
 
-  private async onAfterEmitAsync(compilation: wc.Compilation, callback: () => void) {
+  private async onAfterEmitAsync(
+    compilation: Compilation,
+    callback: () => void,
+  ) {
     const outputPath = compilation.outputOptions.path;
 
     if (await this.lintAsync(compilation, outputPath)) {
@@ -38,10 +48,8 @@ export class WebExtWebpackPlugin implements Plugin {
       return;
     }
 
-    if (this.watchEnabled)
-      await this.runAsync(outputPath);
-    else
-      await this.buildAsync(outputPath);
+    if (this.watchEnabled) await this.runAsync(outputPath);
+    else await this.buildAsync(outputPath);
 
     if (compilation.compiler.options.mode === 'production' && this.options.sign)
       await this.signAsync(outputPath);
@@ -49,12 +57,12 @@ export class WebExtWebpackPlugin implements Plugin {
     callback();
   }
 
-  private parseLinter(linterMessages: any) {
+  private parseLinter(linterMessages: any[]) {
     const messages: { [code: string]: string[] } = {};
     for (const message of linterMessages) {
-      if (!messages[message.code])
-        messages[message.code] = [];
+      if (!messages[message.code]) messages[message.code] = [];
 
+      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
       messages[message.code].push(`[${message.code}]: ${message.message}`);
     }
     return messages;
@@ -70,18 +78,25 @@ export class WebExtWebpackPlugin implements Plugin {
       {
         showReadyMessage: false,
         shouldExitProgram: false,
-      });
+      },
+    );
   }
 
-  private async lintAsync(compilation: wc.Compilation, outputPath: string): Promise<boolean> {
+  private async lintAsync(
+    compilation: Compilation,
+    outputPath: string,
+  ): Promise<boolean> {
     const linter = await webext.cmd.lint(
       {
         sourceDir: outputPath,
         output: 'none',
         ...this.options.lint,
       },
-      { shouldExitProgram: false });
-    const errors: { [code: string]: string[] } = this.parseLinter(linter.errors);
+      { shouldExitProgram: false },
+    );
+    const errors: { [code: string]: string[] } = this.parseLinter(
+      linter.errors,
+    );
     const warnings: { [code: string]: string[] } = {
       ...this.parseLinter(linter.warnings),
       ...this.parseLinter(linter.notices),
@@ -93,7 +108,7 @@ export class WebExtWebpackPlugin implements Plugin {
       if (key === 'JSON_INVALID')
         errorMessage = `manifest.json\n\t${errorMessage}`;
 
-      compilation.errors.push(new Error(errorMessage));
+      compilation.errors.push(new WebpackError(errorMessage));
     }
 
     for (const [key, value] of Object.entries(warnings)) {
@@ -102,7 +117,7 @@ export class WebExtWebpackPlugin implements Plugin {
       if (key === 'JSON_INVALID')
         errorMessage = `manifest.json\n\t${errorMessage}`;
 
-      compilation.warnings.push(errorMessage);
+      compilation.warnings.push(new WebpackError(errorMessage));
     }
 
     return linter.errors.count === 0;
@@ -127,7 +142,9 @@ export class WebExtWebpackPlugin implements Plugin {
         reloadStrategy: null,
       },
     );
-    console.log(`Automatic extension reloading are handled now by ${PLUGIN_NAME} plugin.`);
+    console.log(
+      `Automatic extension reloading are handled now by ${PLUGIN_NAME} plugin.`,
+    );
   }
 
   private async signAsync(outputPath: string): Promise<boolean> {
@@ -139,8 +156,9 @@ export class WebExtWebpackPlugin implements Plugin {
       {
         showReadyMessage: false,
         shouldExitProgram: false,
-      });
+      },
+    );
 
-    return signResult.success;
+    return signResult.success as boolean;
   }
 }
