@@ -1,4 +1,4 @@
-# web-ext plugin for Webpack 4
+# web-ext plugin for Webpack 5
 
 [![NPM Version][npm-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
