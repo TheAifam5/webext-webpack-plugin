@@ -1,4 +1,4 @@
-import webext from 'web-ext';
+import * as webext from 'web-ext';
 import {
   Compilation,
   Compiler,
